@@ -18,28 +18,38 @@ navLinks.forEach((link) => {
 const hero = document.querySelector('.hero');
 const heroText = document.querySelector('.hero-text');
 const typewriter = document.querySelector('.typewriter');
-const typeText = typewriter?.dataset.text ?? '';
+const firstPart = typewriter?.dataset.textPartOne ?? '';
+const secondPart = typewriter?.dataset.textPartTwo ?? '';
+const accentPart = typewriter?.querySelector('.typewriter-part--accent');
+const mutedPart = typewriter?.querySelector('.typewriter-part--muted');
 
-function animateTypewriter(text, element, delay = 80) {
-  if (!element) return;
+function animateTypewriter(text, element, delay = 55) {
+  if (!element) return new Promise((resolve) => resolve());
+
   element.textContent = '';
   let index = 0;
 
-  const interval = setInterval(() => {
-    if (index >= text.length) {
-      clearInterval(interval);
-      element.style.borderRight = 'none';
-      heroText?.classList.add('visible');
-      return;
-    }
+  return new Promise((resolve) => {
+    const interval = setInterval(() => {
+      if (index >= text.length) {
+        clearInterval(interval);
+        resolve();
+        return;
+      }
 
-    element.textContent += text[index];
-    index += 1;
-  }, delay);
+      element.textContent += text[index];
+      index += 1;
+    }, delay);
+  });
 }
 
 if (typewriter) {
-  setTimeout(() => animateTypewriter(typeText, typewriter), 700);
+  setTimeout(async () => {
+    await animateTypewriter(firstPart, accentPart);
+    await animateTypewriter(secondPart, mutedPart);
+    heroText?.classList.add('visible');
+    typewriter.style.borderRight = 'none';
+  }, 700);
 }
 
 const handleScroll = () => {
