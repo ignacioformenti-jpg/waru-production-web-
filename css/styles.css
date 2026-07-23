@@ -346,7 +346,8 @@ body.services-page .section {
 }
 
 .service-card:hover .service-card__inner,
-.service-card:focus-within .service-card__inner {
+.service-card:focus-within .service-card__inner,
+.service-card.is-flipped .service-card__inner {
   transform: rotateY(180deg);
 }
 

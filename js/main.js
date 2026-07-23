@@ -52,6 +52,33 @@ if (typewriter) {
   }, 700);
 }
 
+const serviceCards = document.querySelectorAll('.service-card');
+
+serviceCards.forEach((card) => {
+  card.setAttribute('tabindex', '0');
+
+  const toggleCardState = () => {
+    if (window.matchMedia('(max-width: 720px)').matches) {
+      const isAlreadyFlipped = card.classList.contains('is-flipped');
+      serviceCards.forEach((item) => item.classList.remove('is-flipped'));
+
+      if (!isAlreadyFlipped) {
+        card.classList.add('is-flipped');
+      }
+    }
+  };
+
+  card.addEventListener('click', toggleCardState);
+  card.addEventListener('touchstart', toggleCardState, { passive: true });
+
+  card.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleCardState();
+    }
+  });
+});
+
 const handleScroll = () => {
   if (!hero) return;
   const scrollY = window.scrollY;
