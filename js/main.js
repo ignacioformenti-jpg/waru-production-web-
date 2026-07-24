@@ -54,15 +54,37 @@ if (typewriter) {
   }, 700);
 }
 
-contactForm?.addEventListener('submit', (event) => {
+contactForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
 
+  const submitButton = contactForm.querySelector('button[type="submit"]');
   const formData = new FormData(contactForm);
   const name = formData.get('name')?.toString().trim() || 'there';
   const eventType = formData.get('eventType')?.toString().trim() || 'your event';
 
-  formMessage.textContent = `Thanks, ${name}. Your ${eventType} request is ready to be reviewed.`;
-  contactForm.reset();
+  submitButton.disabled = true;
+  formMessage.textContent = 'Sending...';
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: { Accept: 'application/json' },
+    });
+
+    if (response.ok) {
+      formMessage.textContent = `Thanks, ${name}. Your ${eventType} request is ready to be reviewed.`;
+      contactForm.reset();
+    } else {
+      const data = await response.json().catch(() => null);
+      const errorText = data?.errors?.map((error) => error.message).join(', ');
+      formMessage.textContent = errorText || 'Something went wrong. Please try again or email us directly.';
+    }
+  } catch (error) {
+    formMessage.textContent = 'Something went wrong. Please try again or email us directly.';
+  } finally {
+    submitButton.disabled = false;
+  }
 });
 
 const serviceCards = document.querySelectorAll('.service-card');
