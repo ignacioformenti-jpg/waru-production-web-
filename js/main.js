@@ -22,6 +22,8 @@ const firstPart = typewriter?.dataset.textPartOne ?? '';
 const secondPart = typewriter?.dataset.textPartTwo ?? '';
 const accentPart = typewriter?.querySelector('.typewriter-part--accent');
 const mutedPart = typewriter?.querySelector('.typewriter-part--muted');
+const contactForm = document.querySelector('#contact-form');
+const formMessage = document.querySelector('.form-message');
 
 function animateTypewriter(text, element, delay = 55) {
   if (!element) return new Promise((resolve) => resolve());
@@ -51,6 +53,17 @@ if (typewriter) {
     typewriter.style.borderRight = 'none';
   }, 700);
 }
+
+contactForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(contactForm);
+  const name = formData.get('name')?.toString().trim() || 'there';
+  const eventType = formData.get('eventType')?.toString().trim() || 'your event';
+
+  formMessage.textContent = `Thanks, ${name}. Your ${eventType} request is ready to be reviewed.`;
+  contactForm.reset();
+});
 
 const serviceCards = document.querySelectorAll('.service-card');
 

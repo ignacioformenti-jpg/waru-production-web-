@@ -138,12 +138,46 @@
 
       <section id="contact" class="section contact-section">
         <div class="container contact-card">
-          <div>
+          <div class="contact-copy">
             <p class="eyebrow">Contact</p>
             <h2>Let’s talk about your next event.</h2>
             <p>If you’re looking for an audiovisual partner with technical clarity, refined style and reliable service, we’re ready to listen.</p>
           </div>
-          <a class="button button-primary" href="mailto:info@waruproductions.com.au">Send inquiry</a>
+
+          <form class="contact-form" id="contact-form">
+            <div class="form-grid">
+              <label class="field">
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+
+              <label class="field">
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+
+              <label class="field">
+                <span>Event type</span>
+                <input type="text" name="eventType" placeholder="Conference, wedding, launch..." required />
+              </label>
+
+              <label class="field">
+                <span>Event date</span>
+                <input type="text" name="eventDate" placeholder="DD/MM/YYYY" />
+              </label>
+
+              <label class="field field--full">
+                <span>Project details</span>
+                <textarea name="details" rows="4" placeholder="Tell us about your event, venue, audio, lighting or streaming needs." required></textarea>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button class="button button-primary" type="submit">Send inquiry</button>
+            </div>
+
+            <p class="form-message" aria-live="polite"></p>
+          </form>
         </div>
       </section>
     </main>
