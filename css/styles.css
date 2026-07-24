@@ -612,6 +612,14 @@ body.services-page .section {
   line-height: 1;
   flex-shrink: 0;
   margin: 0 auto;
+  overflow: hidden;
+}
+
+.contact-detail-list__icon video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .contact-detail-list strong,
