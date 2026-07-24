@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Waru Productions</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="brand">
+          <img src="assets/waru-logo.png" alt="Waru Productions logo" class="brand-logo" />
+          <span>Waru Productions</span>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section contact-page-section">
+        <div class="container contact-layout">
+          <div class="contact-card contact-card--page">
+            <div class="contact-copy">
+              <p class="eyebrow">Contact</p>
+              <h2>Let’s talk about your next event.</h2>
+              <p>
+                Share your event details and we’ll get back to you with a tailored production plan and the right technical support for your brief.
+              </p>
+            </div>
+
+            <form class="contact-form" id="contact-form">
+              <div class="form-grid">
+                <label class="field">
+                  <span>Name</span>
+                  <input type="text" name="name" placeholder="Your name" required />
+                </label>
+
+                <label class="field">
+                  <span>Email</span>
+                  <input type="email" name="email" placeholder="you@example.com" required />
+                </label>
+
+                <label class="field">
+                  <span>Event type</span>
+                  <input type="text" name="eventType" placeholder="Conference, wedding, launch..." required />
+                </label>
+
+                <label class="field">
+                  <span>Event date</span>
+                  <input type="text" name="eventDate" placeholder="DD/MM/YYYY" />
+                </label>
+
+                <label class="field field--full">
+                  <span>Project details</span>
+                  <textarea name="details" rows="4" placeholder="Tell us about your event, venue, audio, lighting or streaming needs." required></textarea>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button class="button button-primary" type="submit">Send inquiry</button>
+              </div>
+
+              <p class="form-message" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <aside class="contact-details-card">
+            <p class="eyebrow">Visit us</p>
+            <ul class="contact-detail-list">
+              <li>
+                <span class="contact-detail-list__icon" aria-hidden="true">📍</span>
+                <div>
+                  <strong>Office</strong>
+                  <span>39 Ocean St N Bondi, NSW 2026 Australia</span>
+                </div>
+              </li>
+              <li>
+                <span class="contact-detail-list__icon" aria-hidden="true">✉️</span>
+                <div>
+                  <strong>Email</strong>
+                  <span>info@waruproductions.com.au</span>
+                </div>
+              </li>
+              <li>
+                <span class="contact-detail-list__icon" aria-hidden="true">📞</span>
+                <div>
+                  <strong>Contact us</strong>
+                  <span>Ignacio +61 415 239 945</span>
+                </div>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>Waru Productions — Reliable, premium audiovisual production.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
